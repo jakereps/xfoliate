@@ -1,0 +1,13 @@
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.log
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+__pycache__/

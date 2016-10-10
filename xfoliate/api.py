@@ -5,28 +5,31 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
+
 import facebook
+
+from .fb import Profile
 
 FB_GRAPH = None
 
 
-def run(fb_at):
+def run():
     global FB_GRAPH
-    response = None
-    try:
-        FB_GRAPH = facebook.GraphAPI(fb_at, version='2.6')
-        # apparently .GraphAPI doesn't validate anything, so moving this here
-        # in order to get an exception raised if the access token is invalid
-        response = FB_GRAPH.get_connections('me', 'posts')
-    except facebook.GraphAPIError:
-        raise ValueError(__invalid_fb_at) from None
 
-    if response is not None:
-        for post in response['data']:
-            if 'message' in post:
-                print('https://facebook.com/%s: %s' %
-                      (post['id'], post['message']))
+    print(__initial_message)
+    fb_at = input('>> ')
+
+    FB_GRAPH = facebook.GraphAPI(fb_at, version='2.6')
+    for post in Profile.scrape_posts(FB_GRAPH):
+        print(post)
 
 
-__invalid_fb_at = 'The access token supplied was invalid. Please try again, '\
-                  'and make sure to follow the above steps! (v2.6 GraphAPI!!)'
+__initial_message = """
+    Welcome to xfoliate! To get started grab a Facebook access token from:
+        https://developers.facebook.com/tools/explorer
+    Click 'Get Token' > 'Get User Access Token'
+    In the top right change the API version number to 2.6
+    You can deselect everything but 'user_posts' for permissions
+
+    Copy and paste the access token below:
+"""

@@ -30,7 +30,6 @@ Setup:
 git clone https://github.com/jakereps/xfoliate.git && cd xfoliate
 conda create -n xfoliate python=3.5
 source activate xfoliate
-pip install -e git+https://github.com/mobolic/facebook-sdk.git#egg=facebook-sdk
 pip install .
 ```
 

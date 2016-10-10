@@ -11,3 +11,4 @@ ehthumbs.db
 Icon?
 Thumbs.db
 __pycache__/
+*.egg-info

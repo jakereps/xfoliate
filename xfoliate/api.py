@@ -6,21 +6,14 @@
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 
-import facebook
-
-from .fb import Profile
-
-FB_GRAPH = None
+from .fb import FacebookHandler
 
 
 def run():
-    global FB_GRAPH
-
     print(__initial_message)
     fb_at = input('>> ')
 
-    FB_GRAPH = facebook.GraphAPI(fb_at, version='2.6')
-    for post in Profile.scrape_posts(FB_GRAPH):
+    for post in FacebookHandler(fb_at).get_posts():
         print(post)
 
 

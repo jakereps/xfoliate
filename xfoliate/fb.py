@@ -12,26 +12,23 @@ import facebook
 import requests
 
 
-class Profile:
+class FacebookHandler(facebook.GraphAPI):
 
-    @staticmethod
-    def scrape_posts(FB_GRAPH):
+    def __init__(self, fb_at):
+        super().__init__(fb_at, version='2.6')
+
+    def get_posts(self):
         try:
-            response = FB_GRAPH.get_connections('me', 'posts')
+            response = self.get_connections('me', 'posts')
             while True:
-                time.sleep(2)
-                if response is not None:
-                    for post in response['data']:
-                        if 'message' in post:
-                            data = 'https://facebook.com/%s: %s' % \
-                                   (post['id'], post['message'])
-                            yield data
+                for post in response['data']:
+                    # if 'message' in post:
+                    #     data = 'https://facebook.com/%s: %s' % \
+                    #            (post['id'], post['message'])
+                    yield post
                 response = requests.get(response['paging']['next']).json()
+                time.sleep(1)
         except KeyError:
             pass
-        except facebook.GraphAPIError as e:
+        except facebook.GraphAPIError:
             raise
-
-
-__invalid_fb_at = 'The access token supplied was invalid. Please try again, '\
-                  'and make sure to follow the above steps! (v2.6 GraphAPI!!)'

@@ -22,9 +22,6 @@ class FacebookHandler(facebook.GraphAPI):
             response = self.get_connections('me', 'posts')
             while True:
                 for post in response['data']:
-                    # if 'message' in post:
-                    #     data = 'https://facebook.com/%s: %s' % \
-                    #            (post['id'], post['message'])
                     yield post
                 response = requests.get(response['paging']['next']).json()
                 time.sleep(1)

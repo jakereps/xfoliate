@@ -5,8 +5,8 @@
 #
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
-from . import run
 
+from .api import run
 
 if __name__ == '__main__':
     run()

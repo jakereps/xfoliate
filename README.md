@@ -15,8 +15,12 @@ xfoliate is a Facebook history scrubber based on sentiment analysis.
 Don't hide your Facebook profile while on the job hunt. 9 out of 10 future doctors recommend xfoliate.
 
 <p align="center">
-  <h3 align="center">Coming 2016...</h3>
+  <h3 align="center">Coming 2016*...</h3>
 </p>
+
+<small>
+
+<sup><sup>*</sup><sup>This semester has delayed delivery...</sup></sup>
 
 ---
 

@@ -6,7 +6,7 @@
 # The full license is in the file LICENSE, distributed with this software.
 # ----------------------------------------------------------------------------
 
-from .api import run
+from ._cli import cli
 
 if __name__ == '__main__':
-    run()
+    cli()

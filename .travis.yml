@@ -1,15 +1,10 @@
 sudo: false
 language: python
-env:
-  - PYTHON_VERSION=3.5
-before_install:
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - chmod +x miniconda.sh
-  - ./miniconda.sh -b
-  - export PATH=/home/travis/miniconda3/bin:$PATH
+python:
+  - "3.5"
 install:
-  - conda create --yes -n test-env python=$PYTHON_VERSION nose flake8
-  - source activate test-env
+  - pip install flake8 nose
   - pip install .
 script:
   - flake8 xfoliate setup.py
+  - nosetests

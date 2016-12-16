@@ -9,7 +9,8 @@ setup(
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['click', 'facebook-sdk', 'nltk', 'requests'],
+    install_requires=['click', 'facebook-sdk', 'nltk', 'requests', 'tqdm',
+                      'twython'],
     author='Jorden Kreps',
     author_email='jk788@nau.edu',
     description='xfoliate your facebook with this one simple click!',
@@ -17,6 +18,6 @@ setup(
     url='https://github.com/jakereps/xfoliate',
     entry_points='''
         [console_scripts]
-        xfoliate=xfoliate.__main__:run
+        xfoliate=xfoliate.__main__:cli
     ''',
 )
